@@ -1,8 +1,12 @@
 import {BrowserRouter as  Router, Switch, Route, Link} from 'react-router-dom' 
-import  {Home}  from './components/pages/Home';
+import  Home  from './components/pages/Home'
 import Contact from './components/pages/Contact'
 import Company from './components/pages/Company'
 import NewProject from './components/pages/NewProject'
+
+import Container from './components/layout/Container';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer'
 
 
 function App() {
@@ -11,15 +15,11 @@ function App() {
     //aqui é o JSX, dentro dele eu faço as alterações para aparecer na parte de front-end/visual do usuário
    <Router>
     {/**parte fisica do jsx */}
-    <ul>
-      <Link to="/">Home</Link>
-      <Link to="/contact">Contato</Link>
-      <Link to="/company">Empresa</Link>
-      <Link to="/newproject">Novo Projeto</Link>
-    </ul>
+    <Navbar />
 
     {/**alterar as paginas do projeto */}
     <Switch>
+      <Container customClass="min-height">
 
       {/**home do projeto */}
       <Route exact path='/'>
@@ -30,16 +30,19 @@ function App() {
         <Contact />
       </Route>
 
+      <Route exact path='/company'>
+        <Company />
+      </Route>
+
       <Route exact path='/newproject'>
         <NewProject />
       </Route>
 
+      </Container>
     </Switch>
 
-    <p>footer</p>
+    <Footer />
 
    </Router>
   );
 }
-
-export default App;
